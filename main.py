@@ -1,18 +1,34 @@
 import streamlit as st
 import gspread
 from google.oauth2.service_account import Credentials
+import json
+import toml
 
+
+def convert_toml_to_json(toml_file, json_file):
+    """Converts a TOML file to JSON format."""
+    try:
+        with open(toml_file, 'r') as f:
+            toml_data = toml.load(f)
+        
+        with open(json_file, 'w') as f:
+            json.dump(toml_data, f, indent=4)
+        
+        print(f"Successfully converted {toml_file} to {json_file}")
+    except Exception as e:
+        print(f"Error: {e}")
+    
+    return f
 
 
 
 if __name__ == '__main__':
-    print('test')
-
+    
     scopes = [
     "https://www.googleapis.com/auth/spreadsheets"
     ]
 
-    credentials = st.secrets
+    credentials = convert_toml_to_json(st.secrets, "credentials.json")
 
     # creds = Credentials.from_service_account_file("credentials.json", scopes=scopes)
     creds = Credentials.from_service_account_file(credentials, scopes=scopes)
