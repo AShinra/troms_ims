@@ -12,13 +12,14 @@ if __name__ == '__main__':
     "https://www.googleapis.com/auth/spreadsheets"
     ]
 
-    st.write(st.secrets)
+    credentials = st.secrets
 
     # creds = Credentials.from_service_account_file("credentials.json", scopes=scopes)
-    # client = gspread.authorize(creds)
+    creds = Credentials.from_service_account_file(credentials, scopes=scopes)
+    client = gspread.authorize(creds)
 
-    # sheet_id = "1ZmilDNuV_h-w1OkKNwlbZCyD42KpaL5ilEK1hELRJpo"
-    # sheet = client.open_by_key(sheet_id)
+    sheet_id = "1ZmilDNuV_h-w1OkKNwlbZCyD42KpaL5ilEK1hELRJpo"
+    sheet = client.open_by_key(sheet_id)
 
-    # values_list = sheet.sheet1.row_values(1)
-    # st.write(values_list)
+    values_list = sheet.sheet1.row_values(1)
+    st.write(values_list)
