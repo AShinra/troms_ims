@@ -30,17 +30,16 @@ if __name__ == '__main__':
     ]
 
     _path = os.getcwd()
-    st.write(_path)
+    _file = f"{_path}/credentials.json"
 
-    credentials = convert_toml_to_json(st.secrets, f"{_path}/credentials.json")
+    credentials = convert_toml_to_json(st.secrets, _file)
     # st.write(credentials.json)
 
-    # creds = Credentials.from_service_account_file("credentials.json", scopes=scopes)
-    # creds = Credentials.from_service_account_file(credentials, scopes=scopes)
-    # client = gspread.authorize(creds)
+    creds = Credentials.from_service_account_file(_file, scopes=scopes)
+    client = gspread.authorize(creds)
 
-    # sheet_id = "1ZmilDNuV_h-w1OkKNwlbZCyD42KpaL5ilEK1hELRJpo"
-    # sheet = client.open_by_key(sheet_id)
+    sheet_id = "1ZmilDNuV_h-w1OkKNwlbZCyD42KpaL5ilEK1hELRJpo"
+    sheet = client.open_by_key(sheet_id)
 
-    # values_list = sheet.sheet1.row_values(1)
-    # st.write(values_list)
+    values_list = sheet.sheet1.row_values(1)
+    st.write(values_list)
