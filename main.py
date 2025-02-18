@@ -19,7 +19,7 @@ def convert_toml_to_json(toml_file, json_file):
     except Exception as e:
         print(f"Error: {e}")
     
-    return json_file                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                        
+    return                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                        
 
 
 
@@ -32,7 +32,7 @@ if __name__ == '__main__':
     _path = os.getcwd()
     _file = f"{_path}/credentials.json"
 
-    credentials = convert_toml_to_json(st.secrets, _file)
+    convert_toml_to_json(st.secrets, _file)
     # st.write(credentials.json)
 
     creds = Credentials.from_service_account_file(_file, scopes=scopes)
