@@ -18,7 +18,7 @@ def convert_toml_to_json(toml_file, json_file):
     except Exception as e:
         print(f"Error: {e}")
     
-    return f
+    return json_file
 
 
 
