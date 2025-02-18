@@ -3,6 +3,7 @@ import gspread
 from google.oauth2.service_account import Credentials
 import json
 import toml
+import os
 
 
 def convert_toml_to_json(toml_file, json_file):
@@ -28,8 +29,11 @@ if __name__ == '__main__':
     "https://www.googleapis.com/auth/spreadsheets"
     ]
 
-    credentials = convert_toml_to_json(st.secrets, "credentials.json")
-    st.write(credentials.json)
+    _path = os.getcwd()
+    st.write(_path)
+
+    # credentials = convert_toml_to_json(st.secrets, "credentials.json")
+    # st.write(credentials.json)
 
     # creds = Credentials.from_service_account_file("credentials.json", scopes=scopes)
     # creds = Credentials.from_service_account_file(credentials, scopes=scopes)
