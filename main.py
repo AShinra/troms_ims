@@ -30,12 +30,14 @@ def main():
         # sheet = client.open("Your Google Sheet Name").sheet1  # Update with your sheet name
         sheet_id = "1ZmilDNuV_h-w1OkKNwlbZCyD42KpaL5ilEK1hELRJpo"
         sheet = client.open_by_key(sheet_id)
-        values_list = sheet.sheet1.row_values(1)
-        st.write(values_list)
-        v = sheet.sheet1.get_values()
+        # values_list = sheet.sheet1.row_values(1)
+        # st.write(values_list)
+        Lists = sheet.sheet1.get_values()
+        for _list in Lists:
+            st.write(_list)
         
-        df = pd.DataFrame(v, columns=['Numbers'])
-        st.dataframe(df)
+        # df = pd.DataFrame(v, columns=['Numbers'])
+        # st.dataframe(df)
 
     except Exception as e:
         st.error(f"Error accessing Google Sheet: {e}")
