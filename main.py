@@ -87,7 +87,7 @@ def onhand():
     # df = df[1:]
     df.columns = ['Date', 'Item', 'Brand', 'Description', 'Quantity', 'Unit']
     df
-    new_df = df.groupby('Item')['Quantity'].sum()
+    new_df = df.groupby('Item')['Quantity'].sum().reset_index()
 
     st.dataframe(new_df, use_container_width=True)
 
