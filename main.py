@@ -31,6 +31,7 @@ def main():
         sheet = client.open_by_key(sheet_id)
         values_list = sheet.sheet1.row_values(1)
         st.write(values_list)
+        sheet.sheet1.append_row([1,2,3,4])
     except Exception as e:
         st.error(f"Error accessing Google Sheet: {e}")
 
