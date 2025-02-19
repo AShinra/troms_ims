@@ -29,14 +29,14 @@ def delivery():
     with st.container(border=True):
         col1, col2, col3 = st.columns(3)
         with col1:
-            _date = st.date_input('Delivery Date').isoformat()
-            _item = st.text_input('Item')
+            _date = st.date_input('Delivery Date', key='i_date').isoformat()
+            _item = st.text_input('Item', key='i_item')
         with col2:
-            _brand = st.text_input('Brand')
-            _desc = st.text_input('Description')
+            _brand = st.text_input('Brand', key='i_brand')
+            _desc = st.text_input('Description', key='i_desc')
         with col3:
-            _qty = st.number_input('Quantity', step=1)
-            _unit = st.selectbox('Unit', options=['pouch', 'sack', 'box', 'pcs', 'can'])
+            _qty = st.number_input('Quantity', step=1, key='i_qty')
+            _unit = st.selectbox('Unit', options=['pouch', 'sack', 'box', 'pcs', 'can'], key='i_unit')
         st.button('Add' , key='add_item')
     
     try:
@@ -51,7 +51,12 @@ def delivery():
         st.error(f"Error accessing Google Sheet: {e}")
 
     if st.session_state['add_item']:
-        sheet.sheet1.append_row([_date, _item, _brand, _desc, _qty, _unit])        
+        sheet.sheet1.append_row([_date, _item, _brand, _desc, _qty, _unit])
+        st.session_state['i_item'] = ''
+        st.session_state['i_brand'] = ''
+        st.session_state['i_desc'] = ''
+        st.session_state['i_qty'] = 0
+        st.session_state['i_unit'] = ''
 
     data = sheet.sheet1.get_all_values()
 
