@@ -11,12 +11,13 @@ def convert_toml_to_json(toml_file, json_file):
     try:
         with open(toml_file, 'r') as f:
             toml_data = toml.load(f)
+            st.write(toml_data)
         
-        with open(json_file, 'w') as f:
-            json.dumps(toml_data, f, indent=4)
-            st.write('Done Dumping')
+        # with open(json_file, 'w') as f:
+        #     json.dump(toml_data, f, indent=4)
+        #     st.write('Done Dumping')
         
-        print(f"Successfully converted {toml_file} to {json_file}")
+        # print(f"Successfully converted {toml_file} to {json_file}")
     except Exception as e:
         print(f"Error: {e}")
     
