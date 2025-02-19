@@ -1,6 +1,7 @@
 import streamlit as st
 import gspread
 from google.oauth2.service_account import Credentials
+import pandas as pd
 
 def get_gsheet_client():
     # Load credentials from Streamlit secrets
@@ -32,7 +33,10 @@ def main():
         values_list = sheet.sheet1.row_values(1)
         st.write(values_list)
         v = sheet.sheet1.get_values()
-        st.write(v)
+        
+        df = pd.DataFrame(v, columns=['Numbers'])
+        st.dataframe(df)
+
     except Exception as e:
         st.error(f"Error accessing Google Sheet: {e}")
 
