@@ -83,12 +83,9 @@ def onhand():
 
     data = sheet.sheet1.get_all_values()
     df = pd.DataFrame(data)
-    # df.columns = df.iloc[0]
-    # df = df[1:]
     df.columns = ['Date', 'Item', 'Brand', 'Description', 'Quantity', 'Unit']
     df['Quantity'] = df['Quantity'].astype(int)
-    st.dataframe(df)
-    new_df = df.groupby(["Item", "Brand"]).agg({"Quantity": "sum"})
+    new_df = df.groupby(["Item", "Brand", "Description"]).agg({"Quantity": "sum"})
     st.dataframe(new_df, use_container_width=True)
 
 
