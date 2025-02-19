@@ -27,17 +27,17 @@ def delivery():
     st.title("Delivery Tracker")
 
     with st.container(border=True):
-        col1, col2, col3 = st.columns(3)
+        col1, col2, col3 = st.columns(3, border=True)
         with col1:
             _date = st.date_input('Delivery Date', key='i_date').isoformat()
-            _item = st.text_input('Item', key='i_item')
+            _edate = st.date_input('Expiration Date', key='i_edate').isoformat()
         with col2:
+            _item = st.text_input('Item', key='i_item')
             _brand = st.text_input('Brand', key='i_brand')
             _desc = st.text_input('Description', key='i_desc')
         with col3:
             _qty = st.number_input('Quantity', step=1, key='i_qty')
             _unit = st.selectbox('Unit', options=['pouch', 'sack', 'box', 'pcs', 'can'], key='i_unit')
-            _edate = st.date_input('Expiration Date', key='i_edate').isoformat()
         st.button('Add' , key='add_item')
     
     try:
