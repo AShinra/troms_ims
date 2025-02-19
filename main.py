@@ -63,6 +63,38 @@ def delivery():
     df.columns = ['Date', 'Item', 'Brand', 'Description', 'Quantity', 'Unit']
     st.dataframe(df, use_container_width=True, hide_index=True)
 
+    return
+
+
+def onhand():
+
+    st.title("Delivery Tracker")
+
+    try:
+        client = get_gsheet_client()
+        # sheet = client.open("Your Google Sheet Name").sheet1  # Update with your sheet name
+        sheet_id = "1ZmilDNuV_h-w1OkKNwlbZCyD42KpaL5ilEK1hELRJpo"
+        sheet = client.open_by_key(sheet_id)
+        # values_list = sheet.sheet1.row_values(1)
+        # st.write(values_list)
+
+    except Exception as e:
+        st.error(f"Error accessing Google Sheet: {e}")
+
+    data = sheet.sheet1.get_all_values()
+    df = pd.DataFrame(data)
+    # df.columns = df.iloc[0]
+    # df = df[1:]
+    df.columns = ['Date', 'Item', 'Brand', 'Description', 'Quantity', 'Unit']
+
+    new_df = df.groupby('Item')
+
+    st.dataframe(new_df, use_container_width=True, hide_index=True)
+
+
+    return
+
+
 
 if __name__ == "__main__":
 
@@ -74,3 +106,5 @@ if __name__ == "__main__":
     
     if selected=='Delivery':
         delivery()
+    if selected=='Inventory':
+        onhand()
