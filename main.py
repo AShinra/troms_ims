@@ -34,6 +34,8 @@ def main():
         # st.write(values_list)
         data = sheet.sheet1.get_all_values()
         df = pd.DataFrame(data)
+        df.columns = df.iloc[0]
+        df = df[1:]
         st.dataframe(df)
 
 
