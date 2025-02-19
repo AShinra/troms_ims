@@ -86,7 +86,7 @@ def onhand():
     # df.columns = df.iloc[0]
     # df = df[1:]
     df.columns = ['Date', 'Item', 'Brand', 'Description', 'Quantity', 'Unit']
-    df = df['Quantity'].astype(int)
+    df['Quantity'] = df['Quantity'].astype(int)
     st.dataframe(df)
     new_df = df.groupby("Item").agg({"Quantity": "sum"})
     st.dataframe(new_df, use_container_width=True)
