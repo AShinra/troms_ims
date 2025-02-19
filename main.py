@@ -31,7 +31,7 @@ def main():
             st.date_input('Delivery Date')
             st.text_input('Item Name')
         with col2:
-            st.number_input('Quantity')
+            st.number_input('Quantity', step=1)
             st.text_input('Description')
     
     try:
