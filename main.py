@@ -32,9 +32,8 @@ def main():
         sheet = client.open_by_key(sheet_id)
         # values_list = sheet.sheet1.row_values(1)
         # st.write(values_list)
-        Lists = sheet.sheet1.get_values()
-        for _list in Lists:
-            st.write(_list)
+        _lists = sheet.sheet1.get_all_values()
+        st.write(_lists)
         
         # df = pd.DataFrame(v, columns=['Numbers'])
         # st.dataframe(df)
