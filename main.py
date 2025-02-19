@@ -14,6 +14,7 @@ def convert_toml_to_json(toml_file, json_file):
         
         with open(json_file, 'w') as f:
             json.dump(toml_data, f, indent=4)
+            st.write('Done Dumping')
         
         print(f"Successfully converted {toml_file} to {json_file}")
     except Exception as e:
