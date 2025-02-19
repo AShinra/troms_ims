@@ -28,7 +28,7 @@ def main():
     with st.container(border=True):
         col1, col2 = st.columns(2)
         with col1:
-            _date = st.date_input('Delivery Date')
+            _date = st.date_input('Delivery Date').isoformat()
             _item = st.text_input('Item')
             _brand = st.text_input('Brand')
         with col2:
