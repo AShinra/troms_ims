@@ -61,7 +61,7 @@ def delivery():
     # df.columns = df.iloc[0]
     # df = df[1:]
     df.columns = ['Date', 'Item', 'Brand', 'Description', 'Quantity', 'Unit']
-    st.dataframe(df, use_container_width=True)
+    st.dataframe(df, use_container_width=True, hide_index=True)
 
 
 if __name__ == "__main__":
