@@ -41,15 +41,15 @@ def main():
         sheet = client.open_by_key(sheet_id)
         # values_list = sheet.sheet1.row_values(1)
         # st.write(values_list)
-        data = sheet.sheet1.get_all_values()
-        df = pd.DataFrame(data)
-        df.columns = df.iloc[0]
-        df = df[1:]
-        st.dataframe(df)
-
 
     except Exception as e:
         st.error(f"Error accessing Google Sheet: {e}")
+
+    data = sheet.sheet1.get_all_values()
+    df = pd.DataFrame(data)
+    df.columns = df.iloc[0]
+    df = df[1:]
+    st.dataframe(df)
 
 if __name__ == "__main__":
     main()
