@@ -29,10 +29,12 @@ def main():
         col1, col2 = st.columns(2)
         with col1:
             _date = st.date_input('Delivery Date')
-            _item = st.text_input('Item Name')
+            _item = st.text_input('Item')
+            _brand = st.text_input('Brand')
         with col2:
-            _qty = st.number_input('Quantity', step=1)
             _desc = st.text_input('Description')
+            _qty = st.number_input('Quantity', step=1)
+            _unit = st.selectbox('Unit', options=['pouch', 'sack', 'box', 'pcs'])
         st.button('Add' , key='add_item')
     
     try:
