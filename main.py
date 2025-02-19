@@ -68,7 +68,7 @@ def delivery():
 
 def onhand():
 
-    st.title("Delivery Tracker")
+    st.title("Inventory Tracker")
 
     try:
         client = get_gsheet_client()
