@@ -47,7 +47,7 @@ def main():
         st.error(f"Error accessing Google Sheet: {e}")
 
     if st.session_state['add_item']:
-        st.write(sheet.sheet1.title)
+        sheet.sheet1.append_row([1,2,3,4])
         # .append_row(_date, _item, _desc, _qty)
 
     data = sheet.sheet1.get_all_values()
