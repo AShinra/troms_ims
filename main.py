@@ -38,7 +38,7 @@ def delivery():
         with col3:
             _qty = st.number_input('Quantity', step=1, key='i_qty')
             _unit = st.selectbox('Unit', options=['pouch', 'sack', 'box', 'pcs', 'can'], key='i_unit')
-        st.button('Add' , key='add_item')
+        st.button('Add' , key='add_item', use_container_width=True)
     
     try:
         client = get_gsheet_client()
