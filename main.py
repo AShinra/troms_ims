@@ -37,7 +37,7 @@ def delivery():
         with col3:
             _qty = st.number_input('Quantity', step=1, key='i_qty')
             _unit = st.selectbox('Unit', options=['pouch', 'sack', 'box', 'pcs', 'can'], key='i_unit')
-            _edate = st.date_input('Expiration Date', key='i_date').isoformat()
+            _edate = st.date_input('Expiration Date', key='i_edate').isoformat()
         st.button('Add' , key='add_item')
     
     try:
