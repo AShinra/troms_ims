@@ -33,6 +33,7 @@ def main():
         with col2:
             st.number_input('Quantity', step=1)
             st.text_input('Description')
+        st.button('Add')
     
     try:
         client = get_gsheet_client()
