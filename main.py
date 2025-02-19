@@ -50,7 +50,7 @@ def main():
     df = pd.DataFrame(data)
     df.columns = df.iloc[0]
     df = df[1:]
-    st.dataframe(df)
+    st.dataframe(df, use_container_width=True)
 
 if __name__ == "__main__":
     main()
