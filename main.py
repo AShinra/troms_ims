@@ -65,7 +65,7 @@ def main():
 if __name__ == "__main__":
 
     with st.sidebar:
-        selected = option_menu("Main Menu", ["Home", 'Settings'], 
-        icons=['house', 'gear'], menu_icon="cast", default_index=1)
-        selected
+        selected = option_menu("Inventory Menu", ["Delivery", 'Set Out', 'Inventory'], 
+        icons=['truck', 'basket', 'bank'], menu_icon="cast", default_index=1)
+        
     main()
