@@ -58,8 +58,8 @@ def delivery():
     data = sheet.sheet1.get_all_values()
 
     df = pd.DataFrame(data)
-    df.columns = df.iloc[0]
-    df = df[1:]
+    # df.columns = df.iloc[0]
+    # df = df[1:]
     st.dataframe(df, use_container_width=True)
 
 
