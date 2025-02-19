@@ -13,8 +13,8 @@ def get_gsheet_client():
         "client_id": st.secrets["gcp_service_account"]["client_id"],
         "auth_uri": st.secrets["gcp_service_account"]["auth_uri"],
         "token_uri": st.secrets["gcp_service_account"]["token_uri"],
-        # "auth_provider_x509_cert_url": st.secrets["gcp_service_account"]["auth_provider_x509_cert_url"],
-        # "client_x509_cert_url": st.secrets["gcp_service_account"]["client_x509_cert_url"]
+        "auth_provider_x509_cert_url": st.secrets["gcp_service_account"]["auth_provider_x509_cert_url"],
+        "client_x509_cert_url": st.secrets["gcp_service_account"]["client_x509_cert_url"]
     }
     
     credentials = Credentials.from_service_account_info(credentials_dict, scopes=["https://www.googleapis.com/auth/spreadsheets"])
@@ -26,7 +26,9 @@ def main():
     
     try:
         client = get_gsheet_client()
-        sheet = client.open("Your Google Sheet Name").sheet1  # Update with your sheet name
+        # sheet = client.open("Your Google Sheet Name").sheet1  # Update with your sheet name
+        sheet_id = "1ZmilDNuV_h-w1OkKNwlbZCyD42KpaL5ilEK1hELRJpo"
+        sheet = client.open_by_key(sheet_id)
         data = sheet.get_all_records()
         st.write("Data from Google Sheet:", data)
     except Exception as e:
