@@ -34,7 +34,7 @@ def main():
         with col2:
             _desc = st.text_input('Description')
             _qty = st.number_input('Quantity', step=1)
-            _unit = st.selectbox('Unit', options=['pouch', 'sack', 'box', 'pcs'])
+            _unit = st.selectbox('Unit', options=['pouch', 'sack', 'box', 'pcs', 'can'])
         st.button('Add' , key='add_item')
     
     try:
