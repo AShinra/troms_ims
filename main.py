@@ -32,12 +32,10 @@ def main():
         sheet = client.open_by_key(sheet_id)
         # values_list = sheet.sheet1.row_values(1)
         # st.write(values_list)
-        _lists = sheet.sheet1.col_values(1)
-        _dict = {}
-        st.write(_lists)
-        
-        # df = pd.DataFrame(v, columns=['Numbers'])
-        # st.dataframe(df)
+        data = sheet.sheet1.get_all_values()
+        df = pd.DataFrame(data)
+        st.dataframe(df)
+
 
     except Exception as e:
         st.error(f"Error accessing Google Sheet: {e}")
