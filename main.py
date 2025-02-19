@@ -28,12 +28,12 @@ def main():
     with st.container(border=True):
         col1, col2 = st.columns(2)
         with col1:
-            st.date_input('Delivery Date')
-            st.text_input('Item Name')
+            _date = st.date_input('Delivery Date')
+            _item = st.text_input('Item Name')
         with col2:
-            st.number_input('Quantity', step=1)
-            st.text_input('Description')
-        st.button('Add')
+            _qty = st.number_input('Quantity', step=1)
+            _desc = st.text_input('Description')
+        st.button('Add' , key='add_item')
     
     try:
         client = get_gsheet_client()
@@ -46,11 +46,16 @@ def main():
     except Exception as e:
         st.error(f"Error accessing Google Sheet: {e}")
 
+    if st.session_state['add_item']:
+        sheet.sheet1.append_row(_date, _item, _desc, _qty)
+
     data = sheet.sheet1.get_all_values()
+
     df = pd.DataFrame(data)
     df.columns = df.iloc[0]
     df = df[1:]
     st.dataframe(df, use_container_width=True)
+
 
 if __name__ == "__main__":
     main()
