@@ -67,6 +67,7 @@ if __name__ == "__main__":
     with st.sidebar:
         selected = option_menu("Inventory Menu", ["Delivery", 'Set Out', 'Inventory'],
                                menu_icon='box2-heart',
-                               icons=['truck', 'basket', 'bank'], menu_icon="cast", default_index=1)
+                               icons=['truck', 'basket', 'bank'],
+                               default_index=1)
         
     main()
