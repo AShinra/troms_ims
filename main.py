@@ -13,7 +13,7 @@ def convert_toml_to_json(toml_file, json_file):
             toml_data = toml.load(f)
         
         with open(json_file, 'w') as f:
-            json.dump(toml_data, f, indent=4)
+            json.dumps(toml_data, f, indent=4)
             st.write('Done Dumping')
         
         print(f"Successfully converted {toml_file} to {json_file}")
@@ -32,13 +32,6 @@ if __name__ == '__main__':
 
     _path = os.getcwd()
     _file = f"{_path}/credentials.json"
-
-    _data = {'text':'sapple'}
-
-    json_object = json.dumps(_data, indent=4)
-
-    with open(_file, "w") as outfile:
-        outfile.write(json_object)
 
     convert_toml_to_json(st.secrets, _file)
     # st.write(credentials.json)
