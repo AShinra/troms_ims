@@ -29,8 +29,10 @@ def main():
         # sheet = client.open("Your Google Sheet Name").sheet1  # Update with your sheet name
         sheet_id = "1ZmilDNuV_h-w1OkKNwlbZCyD42KpaL5ilEK1hELRJpo"
         sheet = client.open_by_key(sheet_id)
-        data = sheet.get_all_records()
-        st.write("Data from Google Sheet:", data)
+        # data = sheet.get_all_records()
+        values_list = sheet.sheet1.row_values(1)
+        st.write(values_list)
+        # st.write("Data from Google Sheet:", data)
     except Exception as e:
         st.error(f"Error accessing Google Sheet: {e}")
 
