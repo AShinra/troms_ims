@@ -1,40 +1,51 @@
 import streamlit as st
 import gspread
 from google.oauth2.service_account import Credentials
-import json
-import toml
-import os
 
+def get_gsheet_client():
+    # Load credentials from Streamlit secrets
+    credentials_dict = {
+        "type": st.secrets["gcp_service_account"]["type"],
+        "project_id": st.secrets["gcp_service_account"]["project_id"],
+        "private_key_id": st.secrets["gcp_service_account"]["private_key_id"],
+        "private_key": st.secrets["gcp_service_account"]["private_key"],
+        "client_email": st.secrets["gcp_service_account"]["client_email"],
+        "client_id": st.secrets["gcp_service_account"]["client_id"],
+        "auth_uri": st.secrets["gcp_service_account"]["auth_uri"],
+        "token_uri": st.secrets["gcp_service_account"]["token_uri"],
+        "auth_provider_x509_cert_url": st.secrets["gcp_service_account"]["auth_provider_x509_cert_url"],
+        "client_x509_cert_url": st.secrets["gcp_service_account"]["client_x509_cert_url"]
+    }
+    
+    credentials = Credentials.from_service_account_info(credentials_dict, scopes=["https://www.googleapis.com/auth/spreadsheets"])
+    client = gspread.authorize(credentials)
+    return client
 
-def convert_toml_to_json(toml_file, json_file):
-    """Converts a TOML file to JSON format."""
+def main():
+    st.title("Google Sheets Access with Streamlit")
+    
     try:
-        with open(toml_file, 'r') as f:
-            toml_data = toml.load(f)
-            st.write(toml_data)
-        
-        # with open(json_file, 'w') as f:
-        #     json.dump(toml_data, f, indent=4)
-        #     st.write('Done Dumping')
-        
-        # print(f"Successfully converted {toml_file} to {json_file}")
+        client = get_gsheet_client()
+        sheet = client.open("Your Google Sheet Name").sheet1  # Update with your sheet name
+        data = sheet.get_all_records()
+        st.write("Data from Google Sheet:", data)
     except Exception as e:
-        print(f"Error: {e}")
+        st.error(f"Error accessing Google Sheet: {e}")
+
+if __name__ == "__main__":
+    main()
+
+
+# if __name__ == '__main__':
     
-    return                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                        
+#     scopes = [
+#     "https://www.googleapis.com/auth/spreadsheets"
+#     ]
 
+#     _path = os.getcwd()
+#     _file = f"{_path}/credentials.json"
 
-
-if __name__ == '__main__':
-    
-    scopes = [
-    "https://www.googleapis.com/auth/spreadsheets"
-    ]
-
-    _path = os.getcwd()
-    _file = f"{_path}/credentials.json"
-
-    convert_toml_to_json(st.secrets, _file)
+#     convert_toml_to_json(st.secrets, _file)
     # st.write(credentials.json)
 
     # creds = Credentials.from_service_account_file(_file, scopes=scopes)
