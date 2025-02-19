@@ -26,13 +26,14 @@ def main():
     st.title("JFM Inventory Management")
 
     with st.container(border=True):
-        col1, col2 = st.columns(2)
+        col1, col2, col3 = st.columns(3)
         with col1:
             _date = st.date_input('Delivery Date').isoformat()
             _item = st.text_input('Item')
-            _brand = st.text_input('Brand')
         with col2:
+            _brand = st.text_input('Brand')
             _desc = st.text_input('Description')
+        with col3:
             _qty = st.number_input('Quantity', step=1)
             _unit = st.selectbox('Unit', options=['pouch', 'sack', 'box', 'pcs', 'can'])
         st.button('Add' , key='add_item')
