@@ -51,7 +51,8 @@ def delivery():
         st.error(f"Error accessing Google Sheet: {e}")
 
     if st.session_state['add_item']:
-        sheet.sheet1.append_row([_date, _item, _brand, _desc, _qty, _unit])
+        # sheet.sheet1.append_row([_date, _item, _brand, _desc, _qty, _unit])
+        sheet.sheet1.insert_row([_date, _item, _brand, _desc, _qty, _unit])
         
 
     data = sheet.sheet1.get_all_values()
