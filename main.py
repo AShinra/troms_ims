@@ -52,11 +52,7 @@ def delivery():
 
     if st.session_state['add_item']:
         sheet.sheet1.append_row([_date, _item, _brand, _desc, _qty, _unit])
-        st.session_state['i_item'] = ''
-        st.session_state['i_brand'] = ''
-        st.session_state['i_desc'] = ''
-        st.session_state['i_qty'] = 0
-        st.session_state['i_unit'] = ''
+        
 
     data = sheet.sheet1.get_all_values()
 
