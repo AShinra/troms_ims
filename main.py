@@ -25,8 +25,14 @@ def get_gsheet_client():
 def main():
     st.title("JFM Inventory Management")
 
-    st.date_input('Delivery Date')
-    st.text_input('Item Name')
+    with st.container(border=True):
+        col1, col2 = st.columns(2)
+        with col1:
+            st.date_input('Delivery Date')
+            st.text_input('Item Name')
+        with col2:
+            st.number_input('Quantity')
+            st.text_input('Description')
     
     try:
         client = get_gsheet_client()
