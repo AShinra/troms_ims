@@ -23,8 +23,8 @@ def get_gsheet_client():
     client = gspread.authorize(credentials)
     return client
 
-def main():
-    st.title("JFM Inventory Management")
+def delivery():
+    st.title("Delivery Tracker")
 
     with st.container(border=True):
         col1, col2, col3 = st.columns(3)
@@ -69,5 +69,6 @@ if __name__ == "__main__":
                                menu_icon='box2-heart',
                                icons=['truck', 'basket', 'bank'],
                                default_index=1)
-        
-    main()
+    
+    if selected=='Delivery':
+        delivery()
